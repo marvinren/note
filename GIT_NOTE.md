@@ -28,22 +28,53 @@ git init project_path
 cd project_path
 ```
 
-## git的提交
+## 提交代码：git的提交
 git要注意有暂存区，然后要从暂存区提交
 ```
 git add <filename>
 git commit -m "<commit message>"
 ```
 
-## git的log&gitk
+PS：
+```
+git mv <source_file>  <target_file>
+git rm <filename>
+```
+
+## 查看git的日志：git的log&gitk
 如下是一个常用的名称：
 ```
 git log --oneline -n4 --graph --all
 ```
 PS:
 ```
-git branch -ae //查看所有的分支 
+git branch -av //查看所有的分支 
 git reset -hard //可以吧暂存区的代码回退到未添加到暂存区
 git checkout -b <branch_name> //创建分支并指向该分支
+git checkout <branch_name> //切换分支
 ```
 
+### gitk是一个图形化的界面展示
+
+* 首先要分清界面内容
+* Patch&Tree的差别
+* Author&Committer的差别
+* 定制界面
+* tag操作
+
+
+## 解密git：理解.git目录
+
+* HEAD：文件表明指针指向的分支
+* config：配置信息（local）
+* refs目录：表达了分支和tag的指针指向
+* objects目录：保存具体的文件
+PS:
+```
+git cat-file -t <commit-id> //type:commit tree blob tag
+git cat-file -p <commit-id> //content
+```
+
+### 理解commit,tree&blob
+
+略
