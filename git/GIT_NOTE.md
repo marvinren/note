@@ -78,3 +78,59 @@ git cat-file -p <commit-id> //content
 ### 理解commit,tree&blob
 
 略
+
+```
+
+### 理解commit,tree&blob
+
+略
+PS：
+* 注意“分离头指针" detached head
+
+## HEAD指针
+
+HEAD是指向branch或者commit，指向commit的时候是分离头指针，但本质上指向branch也本质上指向了一个commit
+HEAD可以用来替代一个commit，比方说`HEAD`  `HEAD^1` `HEAD~1`
+
+PS:
+```
+git diff HEAD HEAD^
+```
+
+# git使用的常用场景
+## 删除不需要的分支
+```
+gitk --all
+git branch -d <branch_name>
+git branche -D <branch_name> //强势删除
+```
+
+## 修改最近一次提交&之前的提交的message
+```
+git commit --amend
+```
+
+```
+git rebase -i <commit_id>
+```
+
+PS: 这些是未提交到远程仓储里的提交的变更
+
+## 合并多次提交
+```
+git rebase -s <commit_id>
+git rebase --contiune //跨commit融合可能用这个
+```
+
+## 进行比较
+
+### 暂存区和head进行比较
+```
+git diff --cached
+```
+
+### 工作区和暂存区的比较
+```
+git diff
+git diff -- <filename>
+```
