@@ -1,0 +1,77 @@
+# docker tools
+## set docker registry to ali
+```
+$ cd /etc/docker
+
+$ cat daemon.json 
+
+{
+"registry-mirrors": [
+"https://kfwkfulq.mirror.aliyuncs.com",
+"https://2lqq34jg.mirror.aliyuncs.com",
+"https://pee6w651.mirror.aliyuncs.com",
+"https://registry.docker-cn.com",
+"http://hub-mirror.c.163.com"
+],
+"dns": ["8.8.8.8","8.8.4.4"]
+}
+```
+
+
+## docker-gc
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -e DRY_RUN=1 spotify/docker-gc
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock spotify/docker-gc
+
+## dockerUI
+docker run -d -p 9000:9000 -v /var/run/docker.sock:/docker.sock \
+--name dockerui abh1nav/dockerui:latest -e="/docker.sock"
+
+## Portainer
+docker run -d -v "/var/run/docker.sock:/var/run/docker.sock" -p 9000:9000 portainer/portainer
+
+## Harbor
+http://10.12.2.146/harbor/sign-in
+https://blog.csdn.net/aixiaoyang168/article/details/73549898
+https://www.cnblogs.com/pangguoping/p/7650014.html
+完全的参考了官网的手册
+https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md
+1：先装了docker-compose
+2：接着修改配置文件harbor.cfg中的hostname项为主机ip地址。
+3：执行install.sh
+4：前台打开网页
+http://10.12.2.146/harbor/projects  admin/Harbor12345
+
+```
+vi /etc/docker/daemon.json
+systemctl restart docker
+docker login 10.12.2.146
+docker tag
+# kubernetes
+## 增减节点
+## dashboard
+
+## kompose
+https://github.com/kubernetes/kompose
+下载rpm下载，安装
+
+## forge
+## ingress&config
+https://s3.amazonaws.com/datawire-static-files/forge/0.4.15/forge -o /tmp/forge
+???
+
+## rancher
+docker run -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+admin/12345678
+
+## helm
+helm init --upgrade -i registry.cn-hangzhou.aliyuncs.com/google_containers/tiller:v2.5.1 --stable-repo-url
+registry.cn-hangzhou.aliyuncs.com/google_containers/tiller  https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
+https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz
+https://yq.aliyun.com/articles/159601
+sudo helm repo add charts https://kubernetes.oss-cn-hangzhou.aliyuncs.com/charts
+yum install -y socat
+
+
+## ingress
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/mandatory.yaml
+helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
