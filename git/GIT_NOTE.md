@@ -78,12 +78,6 @@ git cat-file -p <commit-id> //content
 ### 理解commit,tree&blob
 
 略
-
-```
-
-### 理解commit,tree&blob
-
-略
 PS：
 * 注意“分离头指针" detached head
 
@@ -102,7 +96,7 @@ git diff HEAD HEAD^
 ```
 gitk --all
 git branch -d <branch_name>
-git branche -D <branch_name> //强势删除
+git branch -D <branch_name> //强势删除
 ```
 
 ## 修改最近一次提交&之前的提交的message
@@ -134,3 +128,42 @@ git diff --cached
 git diff
 git diff -- <filename>
 ```
+## 恢复&回退内容
+### 恢复暂存区
+```
+git reset HEAD
+git reset HEAD -- filename
+git reset HEAD --hard //强制恢复工作区和暂存区到HEAD
+```
+
+### 恢复工作区
+```
+git checkout -- filename
+```
+
+### 取消几个commit
+```
+git reset --hard <commitid>
+```
+
+## 比较
+```
+git diff <branch1> <branch2>
+git diff <branch1> <branch2> -- filename
+git diff <commitid1> <commitid2>
+```
+
+## 删除文件
+```
+git rm <filename>
+```
+
+## Stash
+```
+git stash
+git stash list
+git stash apply
+git stash pop
+```
+
+## .gitignore
