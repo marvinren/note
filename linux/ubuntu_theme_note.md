@@ -1,5 +1,5 @@
 # ubuntu美化教程
-PS：
+PS：https://blog.csdn.net/zjfahs/article/details/82811137#1
 
 ## 首先安装gnome-tweak-tool
 ```
